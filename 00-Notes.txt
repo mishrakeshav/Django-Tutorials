@@ -1,0 +1,94 @@
+To start a project use command 
+> django-admin startproject first_project
+
+To Run your project use command 
+> python manage.py runserver
+
+To create an app use command 
+> python manage.py startapp first_app
+
+
+----------------------------------------------------------------------------
+To set up templates 
+Create a templates folder inside the projects directory in the same level as that of  the app
+
+go to settings.py file 
+Create TEMPLATE_DIR variable as shown below using the BASE_DIR
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
+Add this variable in the TEMPLATES LIST as shown below. 
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [TEMPLATE_DIR,], <-------------
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+----------------------------------------------------------------------------
+To setup static folder 
+
+create a static folder in the projects directory in the same level as that of the app
+
+Then go to the setting.py file 
+Create STATIC_DIR variable as shown below using the BASE_DIR variable 
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+Then go to the bottom of the file and copy the code shown below 
+Here we are making a STATICFILES_DIRS list then adding the STATIC_DIR variable init 
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS   = [
+    STATIC_DIR,
+]
+
+----------------------------------------------------------------------------
+How to use static in templates 
+
+if you wanna check if everything is working fine go the below url 
+http://localhost:8000/static/images/new.jpg
+where new.jpg is the name of the image file 
+If the browser shows the image then everything is working fine. 
+
+That will confirm that the paths are set up and connected properly.
+But what we really want to do is set up a template tag for this!
+
+To do this inside an html file, we add in a few specific tags, at the top:
+{% load staticfiles %}
+Then we want to insert the image with an HTML <img src= > style tag using:
+<img src= "{%static “images/pic.jpg” %}" />
+
+
+-------------------------------------------------------------------------------
+This was all about the basics of how to create a project , how to create an app and 
+how use templates and static files in django
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
