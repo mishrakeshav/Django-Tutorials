@@ -1,4 +1,4 @@
-To start a project use command 
+ To start a project use command 
 > django-admin startproject first_project
 
 To Run your project use command 
@@ -6,7 +6,40 @@ To Run your project use command
 
 To create an app use command 
 > python manage.py startapp first_app
+After creating go to settings.py file and add the name of the app in INSTALLED_APP as 
+shown below 
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'first_app'
+]
+----------------------------------------------------------------------------
+To set up urls for each app 
+create an urls.py file inside the first_app
 
+inside urls.py file 
+
+from django.urls import path 
+from first_app import views
+urlpatterns = [
+    path('index', views.index, name = 'index'),
+    path('help', views.help, name = 'help')
+]
+
+Then you need to setup the first_project urls.py 
+as shown below
+from django.contrib import admin
+from django.urls import path
+from django.conf.urls import include
+urlpatterns = [
+
+    path('first_app/', include('first_app.urls')),
+    path('admin/', admin.site.urls),
+]
 
 ----------------------------------------------------------------------------
 To set up templates 

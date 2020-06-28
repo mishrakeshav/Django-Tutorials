@@ -1,0 +1,90 @@
+-------------------------------------------------------------------------------------
+Creating models 
+go to models.py inside the app
+Then create the classes required in your model as shown below 
+
+from django.db import models
+# Create your models here.
+class Topic(models.Model):
+    top_name = models.CharField(max_length = 264, unique = True)
+
+
+    def __str__(self):
+        return self.top_name
+class WebPage(models.Model):
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    name = models.CharField(max_length = 264 , unique = True)
+    url = models.URLField(unique = True)
+
+    def __str__(self):
+        return self.name 
+class AccessRecord(models.Model):
+    name = models.ForeignKey(WebPage, on_delete=models.CASCADE)
+    date = models.DateField()
+    def __str__(self):
+        return str(self.date)
+
+Then the following in the command line 
+>python manage.py migrate 
+>python manage.py makemigration first_app 
+>python manage.py migrate 
+
+If you want to check if all the models have been created 
+Go to the command line and open the shell by using the following command 
+>python manage.py shell 
+>>> from first_app.models import Topic
+<QuerySet []>
+>>> t = Topic(top_name = 'Social Network')
+>>> t.save()
+>>> print(Topic.objects.all())
+<QuerySet [<Topic: Social Network>]>
+	
+-------------------------------------------------------------------------------------
+If you wanna view the database models using the admin login
+then you will have to register the models 
+To register the models of an app with the admin 
+Go to admin.py file of the app and register your models as 
+shown below
+
+from django.contrib import admin
+from first_app.models import Topic, WebPage, AccessRecord
+# Register your models here.
+admin.site.register(Topic)
+admin.site.register(WebPage)
+admin.site.register(AccessRecord)
+
+-------------------------------------------------------------------------------------
+After you have registered all you models with the admin 
+you will have to create a superuser 
+
+Go to the command line and run the following as shown below 
+>python manage.py createsuperuser
+Username (leave blank to use 'mishra'): mishrakeshav
+Email address: mishrakeshavv@gmail.com
+Password:
+Password (again):
+The password is too similar to the email address.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
