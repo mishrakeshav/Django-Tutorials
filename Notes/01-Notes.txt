@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------------
 Creating models 
-go to models.py inside the app
+go to models.py inside the app(first_app)
 Then create the classes required in your model as shown below 
 
 from django.db import models
@@ -11,6 +11,8 @@ class Topic(models.Model):
 
     def __str__(self):
         return self.top_name
+
+
 class WebPage(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     name = models.CharField(max_length = 264 , unique = True)
@@ -18,15 +20,18 @@ class WebPage(models.Model):
 
     def __str__(self):
         return self.name 
+
+
 class AccessRecord(models.Model):
     name = models.ForeignKey(WebPage, on_delete=models.CASCADE)
     date = models.DateField()
     def __str__(self):
         return str(self.date)
 
+
 Then the following in the command line 
 >python manage.py migrate 
->python manage.py makemigration first_app 
+>python manage.py makemigrations first_app 
 >python manage.py migrate 
 
 If you want to check if all the models have been created 
@@ -66,7 +71,7 @@ Password (again):
 The password is too similar to the email address.
 Bypass password validation and create user anyway? [y/N]: y
 Superuser created successfully.
-
+-------------------------------------------------------------------------------------
 
 
 

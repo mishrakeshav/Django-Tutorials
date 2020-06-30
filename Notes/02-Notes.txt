@@ -1,0 +1,8 @@
+Django Operates on Models-Templates-Views paradigm 
+Steps :-
+
+1) In the views.py file we import any models that we need to use 
+2) Use the view to query the model for data that we will need 
+3) Pass results from the models to the template
+4) Edit the template so that it is ready to accept and display the data from the model	
+5) Map a URL to the view

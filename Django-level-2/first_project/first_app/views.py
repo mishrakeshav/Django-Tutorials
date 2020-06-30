@@ -1,11 +1,12 @@
 from django.shortcuts import render
 
 # Create your views here.
-
+from first_app.models import Topic, WebPage, AccessRecord
 
 def index(requests):
+    accessrecords = AccessRecord.objects.order_by('date')
     context = {
-        'insert_me' : "I am from first_app"
+        'accessrecords' : accessrecords
     }
     return render(requests,'first_app/index.html', context = context )
 

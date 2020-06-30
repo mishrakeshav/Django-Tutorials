@@ -1,11 +1,28 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'first_app/styles.css' %}">
     <title>Index Page</title>
 </head>
 <body>
-    {{ insert_me }}
+    {% if accessrecords %}
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Date</th>
+            </thead>
+            <tbody>
+                {% for record in accessrecords %}
+                    <tr>
+                        <td>{{ record.name }}</td>
+                        <td>{{ record.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 </body>
 </html>
