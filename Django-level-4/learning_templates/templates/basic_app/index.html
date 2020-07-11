@@ -3,7 +3,7 @@
 
     {% block content %}
         <h1>Welcome to index</h1>
-        <h1>{{ name|upper }}</h1>
+        <h1>{{ name|cut:'world' }}</h1>
         <h2>{{ num|add:'99' }}</h2>
     {% endblock content %}
     
