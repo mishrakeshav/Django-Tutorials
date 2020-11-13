@@ -28,6 +28,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('posts:single', kwargs={'username': self.user.username, 'pk': self.pk})
+    
+    widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-post-title', 'placeholder': 'Enter post title'}),
+            'text': forms.Textarea(attrs={'class': 'editable medium-editor-textarea form-post-content',
+                                          'placeholder': 'Enter post text'})
+        }
 
     class Meta:
         # descending order
