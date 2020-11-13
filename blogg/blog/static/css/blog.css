@@ -1,0 +1,205 @@
+/* Color changer */
+
+
+.loader{
+  filter: hue-rotate(0deg);
+  color:l linear-gradient(45deg, #0f8, #08f);
+  animation: hue 10000ms infinite linear;
+}
+
+
+/* ------- blog ---------- */
+
+
+/* navbar */
+
+.login-icon{
+  font-size: 33px;
+  text-align:center;
+}
+
+
+.centerstage{
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+}
+
+.techfont{
+  font-familly: 'Chelsea Market', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.bigbrand{
+  font-size: 1.5em;
+}
+
+
+/* -------- posts ------------ */
+
+.page-heading{
+  text-align: center;
+  margin-top: 1.2em;
+  padding-bottom: 0.7em;
+  margin-bottom: 1em;
+  text-decoration: underline;
+
+  border: 0px;
+  border-bottom: 2px;
+  border-style: dashed;
+  border-color: #BDC2B6;
+  border-radius: 5px;
+
+}
+
+/* post text */
+
+.post-date{
+  text-align: center;
+}
+
+.post-title{
+  font-familly: 'Chelsea Market', sans-serif;
+  text-align: center;
+}
+
+.post-content{
+  font-family: 'Montserrat';
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.form-comment-title{
+
+}
+
+.form-comment-content{
+
+}
+
+.no-comments{
+  text-align: center;
+  margin-top: 1em;
+  font-size: 0.9em;
+}
+
+.comment{
+  padding: 1em;
+  border: 0px;
+  border-bottom: 2px;
+  border-style: dashed;
+  border-color: #DDE2D6;
+
+}
+
+.comment-count-container{
+  margin-top: 1em;
+  padding-top: 0em;
+}
+.comment-count{
+  font-size: 0.9em;
+}
+
+body{
+  min-height:100%;
+  background-color: #EDF2E6;
+}
+
+.summary{
+
+}
+
+.summary-title{
+
+}
+
+.summary-content{
+  font-size: 0.9em;
+
+}
+/* block container (text injection ) */
+
+.base-container{
+  border-width: 0px;
+  border-radius: 10px;
+  border: 1px;
+  border-right: 2px;
+  border-style: solid;
+  border-color: #CDD2C6;
+
+}
+
+.full-height{
+  min-height: 100%
+}
+
+.spacing-container{
+  margin: 1em;
+}
+
+
+.post-in-list{
+  background: #EBF0E4;
+  margin: 0px;
+  padding: 1.1em;
+  padding-top: 2.6em;
+  padding-bottom: 3.9em;
+  border: 0px;
+  border-bottom: 2px;
+  border-style: dashed;
+  border-color: #DDE2D6;
+
+  width: 100%;
+
+}
+
+.full-width{
+  width: 120%;
+}
+
+
+.form-post-text{
+  margin-left: 3.1em;
+  padding-left: 3em;
+}
+
+.form-post-title{
+
+
+}
+
+
+
+
+
+/* buttons */
+
+
+.btn-crud{
+  position: relative;
+  padding: 0em;
+  padding-top: 0.3em;
+  margin-bottom:0.3em;
+
+}
+
+.btn-crud-content{
+  font-size: 18px;
+  position: relative;
+  text-align: center;
+  margin: 0em;
+  padding: 0em;
+  padding-right: 0.4em;
+  padding-left: 0.4em;
+
+}
+
+
+
+.btn-comment-approve{
+  font-size:12px;
+  margin-top: 0.2em;
+
+}

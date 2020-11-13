@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<header class="page-heading" >
+	<h1 class="display-4">Drafts</h1>
+</header>
+{% for post in post_list %}
+<article class="post-in-list full-height">
+	<header class="post-title">
+		<h2>
+			<a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+		</h2>
+	</header>
+	<section>
+		<div class="post-date">
+		<strong>Created on:</strong> {{ post.created_date|date:'d-m-Y'}}
+		</div>
+	</section>
+	<section class="summary">
+		<p>
+			<header class="summary-title">
+				<strong>Summary:</strong>
+			</header>
+			<section class="summary-content">
+					{{ post.text|striptags|linebreaksbr|truncatechars:200 }}
+			</section>
+		</p>
+	</section>
+</article>
+{% endfor %}
+
+{% endblock %}
