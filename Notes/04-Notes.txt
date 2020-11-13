@@ -1,0 +1,93 @@
+User authentication , Login and Logout 
+
+first install these two packages 
+pip install bcrypt 
+pip install django[argon2]
+
+Then add this list before the AUTH_PASSWORD_VALIDATORS list 
+
+# You will need to do: pip install bcrypt
+# as well as: pip install django[argon2]
+___________________________________________________________________
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+]
+___________________________________________________________________
+About media files 
+make a variable MEDIA_DIR and do as shown below 
+
+This is same as that of static files , but it is used to store media 
+of the users
+___________________________________________________________________
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = [
+    MEDIA_DIR,
+]
+MEDIA_URL = '/media/'
+___________________________________________________________________
+
+
+For creating the user model go to models.py file and create the UserProfileInfo class 
+which has OneToOneField relation with the django builtin model User 
+The builtin model of django has the following features 
+
+username 
+first_name 
+surname 
+email 
+password 
+
+Inside the models.py file 
+___________________________________________________________________________
+from django.db import models
+from django.contrib.auth.models import User
+# Create your models here.
+
+class UserProfileInfo(models.Model):
+
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+
+    #addtional classes 
+    portfolio_site = models.URLField(blank = True)
+
+    profile_pic = models.ImageField(upload_to = 'profile_pics', blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+______________________________________________________________________________
+
+
+
+
+Then create an file forms.py in the basicapp directory 
+inside the forms.py 
+__________________________________________________________
+from django import forms
+from django.contrib.auth.models import User 
+from basicapp.models import UserProfileInfo
+
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget = forms.PasswordInput())
+
+    class Meta():
+        model = User 
+        fields = ('username', 'email', 'password')
+
+
+class UserProfileInfo(forms.ModelForm):
+    class Meta():
+        model = UserProfileInfo()
+        fields = ('portfolio_site', 'profile_pic')
+_______________________________________________________________
+
+After create forms and models go to command line and run the following 
+>>python manage.py migrate 
+>>python manage.py makemigrations
+
